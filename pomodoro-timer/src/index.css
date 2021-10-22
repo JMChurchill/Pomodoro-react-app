@@ -190,9 +190,45 @@ Controlbar
 
 .timer p {
   color: var(--mainBlack);
-  font-size: 6vw;
+  font-size: 8vw;
   font-weight: bold;
 }
+.timer .time-input {
+  /* display: inline-flex; */
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.timer .time-input input {
+  font-size: 6vw;
+  font-weight: bold;
+  width: 10vw;
+  height: 10vw;
+  text-align: center;
+  /* text-align: end; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+}
+.timer .time-input .minutes-input {
+  /* text-align: center;
+  color: red; */
+}
+
+.timer .time-input .seconds-input {
+  /* text-align: center;
+  color: rebeccapurple !important; */
+}
+.hidden-submit {
+  display: none;
+}
+
 @media screen and (max-width: 576px) {
   .control-bar h2 {
     /* margin: 0.5rem 0;
@@ -226,5 +262,19 @@ Controlbar
   .timer p {
     font-size: 15vw;
     /* font-weight: bold; */
+  }
+  .timer .time-input input {
+    font-size: 8vw;
+    /* font-weight: bold; */
+    width: 15vw;
+    height: 15vw;
+    text-align: center;
+    transform: translate(-0%, -10%);
+
+    /* text-align: end; */
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
   }
 }

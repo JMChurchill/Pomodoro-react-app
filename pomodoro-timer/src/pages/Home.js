@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // import components
 import ControlBar from "../Components/ControlBar";
@@ -7,66 +7,71 @@ import Timer from "../Components/Timer";
 
 const Home = () => {
   const [isStarted, setIsStarted] = useState(false);
-  const [time, setTime] = useState(null);
-  const [interval, setSInterval] = useState(null);
-  let clock, offset;
+  const [isEditing, setIsEditing] = useState(false);
+  const [startTime, setStartTime] = useState(() => 45 * 60);
+  const [time, setTime] = useState(() => startTime);
+  // const [interval, setSInterval] = useState(null);
 
-  const myTimer = () => {
-    console.log(isStarted);
-    console.log("timeUpdate");
-    setTime(() => new Date());
-    console.log(time);
+  useEffect(() => {
+    let interval = null;
+    if (isStarted) {
+      interval = setInterval(() => {
+        setTime((time) => time - 1);
+        // console.log(seconds);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [isStarted]);
+
+  const setTimer = (se) => {
+    // setTime(hours * 60 * 60 + minutes * 60, seconds * 60);
+    setStartTime(se);
+    console.log(`se: ${se}`);
+    resetTimer();
+    // setIsStarted(false);
   };
-  // // default options
-  // var options = options || {};
-  // options.delay = options.delay || 1;
 
   const startTimer = () => {
     // console.log(isStarted);
     if (!isStarted) {
-      setSInterval(setInterval(myTimer, 1000));
-      console.log(`interval: ${interval}`);
-
       console.log("timer started");
       setIsStarted(true);
-      console.log(isStarted);
     }
   };
 
   const stopTimer = () => {
+    //   console.log(isStarted);
     if (isStarted) {
       console.log("timer stopped");
-      console.log(interval);
-      setSInterval(clearInterval(interval));
-      // clearInterval(interval);
-      console.log(interval);
       setIsStarted(false);
-      //   console.log(isStarted);
     }
   };
 
   const resetTimer = () => {
     console.log("timer reset");
-    setSInterval(clearInterval(interval));
-    setTime(null);
+    setTime(startTime);
     setIsStarted(false);
   };
 
-  React.useEffect(() => {
-    // setTime(() => Date.now());
-    // setTime(time - new Date());
-    // clock / 1000;
-    // interval = setInterval(myTimer, 1000);
-    // console.log(time);
-  }, []);
-
   return (
     <main>
-      <Timer time={time} />
+      <Timer
+        time={time}
+        isStarted={isStarted}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+        setTimer={setTimer}
+
+        // seconds={seconds}
+      />
       <ControlBar
         startTimer={startTimer}
         stopTimer={stopTimer}
         resetTimer={resetTimer}
+        setTimer={setTimer}
       />
     </main>
   );
