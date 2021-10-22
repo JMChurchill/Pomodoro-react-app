@@ -1,17 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-const ControlBar = (props) => {
+const ControlBar = ({ startTimer, stopTimer, resetTimer }) => {
   return (
     <div className="control-bar">
       <h2>controls</h2>
-      <button>Start</button>
-      <button>Pause</button>
-      <button>Restart</button>
+      <button onClick={startTimer}>Start</button>
+      <button onClick={stopTimer}>Pause</button>
+      <button onClick={resetTimer}>Restart</button>
     </div>
   );
 };
 
-ControlBar.propTypes = {};
+// ControlBar.propTypes = {};
 
 export default ControlBar;

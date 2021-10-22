@@ -1,3 +1,34 @@
+/* 
+====== 
+Variables 
+======
+*/
+:root {
+  --primaryLightColor: #d4e6a5;
+  --primaryColor: teal;
+  --primaryDarkColor: #c02c03;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBackground: #f1f5f8;
+  --mainOverlay: rgba(35, 10, 36, 0.4);
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainRed: #bd0303;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 0.3rem;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --mainBorderRadius: 0.25rem;
+  --smallWidth: 85vw;
+  --maxWidth: 40rem;
+  --fullWidth: 1170px;
+}
+
+.App {
+  text-align: center;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -11,7 +42,86 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--mainBlack);
+}
 
+/* 
+====== 
+Buttons 
+======
+*/
+.btn,
+.btn-white,
+.btn-primary {
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+  border-radius: var(--mainBorderRadius);
+  display: inline-block;
+}
+.btn:hover {
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+}
+
+/* 
+====== 
+Navbar 
+======
+*/
+.navbar {
+  background: var(--mainWhite);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--mainGrey);
+  box-shadow: var(--lightShadow);
+  padding: 0 5vw;
+}
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--fullWidth);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+.nav-links a {
+  text-transform: capitalize;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  /* font-weight: 400; */
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
+  transition: var(--mainTransition);
+}
+.nav-links a:hover {
+  color: var(--primaryColor);
+}
+
+/* 
+====== 
+Controlbar
+======
+*/
 .control-bar {
   border: solid black 2px;
   align-items: center;
@@ -23,28 +133,33 @@ code {
 }
 .control-bar button {
   font-size: 1.2rem;
-  background-color: teal;
+  background-color: var(--primaryColor);
   border-radius: 20px;
-  border: 2px solid Steal;
+  border: 2px solid var(--primaryColor);
   margin: 0.2rem 1rem;
   color: white;
   padding: 0.5rem;
+}
+
+.control-bar button:hover {
+  background-color: rgb(32, 212, 212);
+  border: 2px solid rgb(32, 212, 212);
 }
 
 .timer-section {
   border: black 1px solid;
   padding: 1rem;
   position: relative;
-  height: 20vw;
+  height: 50vw;
   /* display: flex;
   justify-content: center;
   align-items: center; */
 }
 
 .outer-circle {
-  height: 20vw;
-  width: 20vw;
-  background-color: teal;
+  height: 45vw;
+  width: 45vw;
+  background-color: var(--primaryColor);
   border-radius: 50%;
   /* display: inline-block; */
   /* Center vertically and horizontally */
@@ -55,8 +170,8 @@ code {
 }
 
 .inner-circle {
-  height: 16vw;
-  width: 16vw;
+  height: 40vw;
+  width: 40vw;
   background-color: white;
   border-radius: 50%;
   /* margin: auto; */
@@ -71,16 +186,45 @@ code {
   margin: auto;
   align-items: center;
   justify-content: center;
-
-  /* display: inline-block; */
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); */
 }
 
 .timer p {
-  color: black;
-  font-size: 5rem;
+  color: var(--mainBlack);
+  font-size: 6vw;
+  font-weight: bold;
+}
+@media screen and (max-width: 576px) {
+  .control-bar h2 {
+    /* margin: 0.5rem 0;
+  font-size: 2rem; */
+    color: blue;
+  }
+
+  .timer-section {
+    border: black 1px solid;
+    padding: 1rem;
+    position: relative;
+    height: 80vw;
+    /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  }
+
+  .outer-circle {
+    height: 80vw;
+    width: 80vw;
+    /* display: inline-block; */
+    /* Center vertically and horizontally */
+  }
+
+  .inner-circle {
+    height: 65vw;
+    width: 65vw;
+    /* margin: auto; */
+  }
+
+  .timer p {
+    font-size: 15vw;
+    /* font-weight: bold; */
+  }
 }
