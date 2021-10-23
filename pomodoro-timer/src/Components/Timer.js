@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 
-const Timer = ({ time, isEditing, setIsEditing, setTimer }) => {
+const Timer = ({
+  time,
+  isEditing,
+  setIsEditing,
+  setTimer,
+  setIsStarted,
+  setIsAlarmSound,
+  completeTimers,
+}) => {
   // const theT = time;
   // console.log(time);
   // const { hours, minutes, seconds } = time;
   const [secs, setSecs] = useState(0);
   const [mins, setMins] = useState(0);
   const [ho, setHo] = useState(0);
+
+  if (time <= 0) {
+    setIsStarted(false);
+    setIsAlarmSound(true);
+  }
 
   const secondsToHms = (value) => {
     // console.log(value);
@@ -51,6 +64,7 @@ const Timer = ({ time, isEditing, setIsEditing, setTimer }) => {
 
   return (
     <section className="timer-section">
+      {/* <p className="completed-timers">Completed: {completeTimers}</p> */}
       <div className="outer-circle">
         <div className="inner-circle">
           <div className="timer">

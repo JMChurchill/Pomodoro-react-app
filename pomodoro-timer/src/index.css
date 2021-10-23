@@ -116,6 +116,14 @@ Navbar
 .nav-links a:hover {
   color: var(--primaryColor);
 }
+/* 
+====== 
+main
+======
+*/
+main {
+  display: block;
+}
 
 /* 
 ====== 
@@ -146,19 +154,34 @@ Controlbar
   border: 2px solid rgb(32, 212, 212);
 }
 
+/* 
+====== 
+Controlbar
+======
+*/
 .timer-section {
   border: black 1px solid;
   padding: 1rem;
   position: relative;
-  height: 50vw;
+  height: 35vw;
   /* display: flex;
   justify-content: center;
   align-items: center; */
 }
 
+/* .completed-timers {
+  z-index: 11;
+  font-weight: bold;
+  font-size: 2rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
 .outer-circle {
-  height: 45vw;
-  width: 45vw;
+  /* z-index: -1; */
+  height: 35vw;
+  width: 35vw;
   background-color: var(--primaryColor);
   border-radius: 50%;
   /* display: inline-block; */
@@ -170,8 +193,8 @@ Controlbar
 }
 
 .inner-circle {
-  height: 40vw;
-  width: 40vw;
+  height: 30vw;
+  width: 30vw;
   background-color: white;
   border-radius: 50%;
   /* margin: auto; */
@@ -190,8 +213,9 @@ Controlbar
 
 .timer p {
   color: var(--mainBlack);
-  font-size: 8vw;
+  font-size: 7vw;
   font-weight: bold;
+  z-index: 1000;
 }
 .timer .time-input {
   /* display: inline-flex; */
@@ -230,6 +254,9 @@ Controlbar
 }
 
 @media screen and (max-width: 576px) {
+  /* main {
+    display: flexbox !important;
+  } */
   .control-bar h2 {
     /* margin: 0.5rem 0;
   font-size: 2rem; */
