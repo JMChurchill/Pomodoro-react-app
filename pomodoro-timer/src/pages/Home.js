@@ -86,6 +86,7 @@ const Home = () => {
         setIsStarted={setIsStarted}
         setIsAlarmSound={setIsAlarm}
         completeTimers={completeTimers}
+        startTime={startTime}
         // seconds={seconds}
       />
       <ControlBar

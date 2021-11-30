@@ -8,6 +8,7 @@ const Timer = ({
   setIsStarted,
   setIsAlarmSound,
   completeTimers,
+  startTime,
 }) => {
   // const theT = time;
   // console.log(time);
@@ -44,6 +45,28 @@ const Timer = ({
   if (time !== null) {
     console.log(time);
     formattedTime = secondsToHms(time);
+    console.log("start" + startTime);
+    let per = time / startTime;
+    let rotate = 360 - per * 360;
+    console.log("percentage gone: " + per + "\nrotate: " + rotate);
+    const halfCircles = document.querySelectorAll(".half-circle");
+    const halfCircleTop = document.querySelector(".half-circle-top");
+    console.log(halfCircles);
+    halfCircles.forEach((cir) => {
+      cir.style.transform = `rotate(${rotate}deg)`;
+      // halfCircles[0].style.transform = `rotate(${rotate}deg)`;
+      // halfCircles[1].style.transform = `rotate(${rotate}deg)`;
+      console.log(rotate);
+      if (rotate >= 180) {
+        console.log("> = 180");
+        // halfCircles[0].style.transform = "rotate (180deg)";
+        halfCircles[0].style.transform = `rotate(180deg)`;
+        halfCircleTop.style.opacity = "0";
+      } else {
+        // halfCircleTop.style.opacity = "1";
+      }
+    });
+
     // formattedTime = `${hours}:${minutes}:${seconds}`;
   }
   const hmsToSeconds = () => {
@@ -66,6 +89,9 @@ const Timer = ({
     <section className="timer-section">
       {/* <p className="completed-timers">Completed: {completeTimers}</p> */}
       <div className="outer-circle">
+        <div className="half-circle"></div>
+        <div className="half-circle"></div>
+        <div className="half-circle-top"></div>
         <div className="inner-circle">
           <div className="timer">
             {/* <p>{time.toLocaleTimeString()}</p> */}
@@ -111,6 +137,23 @@ const Timer = ({
           </div>
         </div>
       </div>
+      {/* <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        viewBox="0 0 100 100"
+        // width="100"
+        // height="100"
+        width="2000"
+        height="2000"
+      >
+        <defs>
+          <linearGradient id="GradientColor">
+            <stop offset="0%" stop-color="#e91e63" />
+            <stop offset="100%" stop-color="#673ab7" />
+          </linearGradient>
+        </defs>
+        <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+      </svg> */}
     </section>
   );
 };

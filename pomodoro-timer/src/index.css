@@ -190,6 +190,9 @@ Controlbar
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+  overflow: hidden;
 }
 
 .inner-circle {
@@ -209,7 +212,70 @@ Controlbar
   margin: auto;
   align-items: center;
   justify-content: center;
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+  /* display: none; */
 }
+
+.half-circle,
+.half-circle-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  transform-origin: right center;
+}
+
+.half-circle:nth-child(1) {
+  background-color: white;
+}
+
+.half-circle:nth-child(2) {
+  background-color: white;
+}
+
+.half-circle-top {
+  background-color: var(--primaryColor);
+}
+
+/* .outer-circle:hover .half-circle:nth-child(1) {
+  transform: rotate(180deg);
+  transition: transform 1s linear;
+}
+.outer-circle:hover .half-circle:nth-child(2) {
+  transform: rotate(360deg);
+  transition: transform 2s linear;
+}
+.outer-circle:hover .half-circle-top {
+  opacity: 0;
+  transition: opacity 0s 1s;
+} */
+/* circle {
+  fill: none;
+  stroke: royalblue;
+  stroke-width: 20px;
+  stroke-dasharray: 472;
+  stroke-dashoffset: 472;
+  animation: anim 2s linear forwards;
+  height: 35vw;
+  width: 35vw;
+}
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35vw;
+  height: 35vw;
+} */
+
+/* @keyframes anim {
+  100% {
+    stroke-dashoffset: 165; /*changes circle size*/
+/* }
+} */
 
 .timer p {
   color: var(--mainBlack);
