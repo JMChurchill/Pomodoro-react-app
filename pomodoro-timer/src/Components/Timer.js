@@ -45,25 +45,22 @@ const Timer = ({
   if (time !== null) {
     console.log(time);
     formattedTime = secondsToHms(time);
-    console.log("start" + startTime);
+    // console.log("start" + startTime);
     let per = time / startTime;
     let rotate = 360 - per * 360;
-    console.log("percentage gone: " + per + "\nrotate: " + rotate);
+    // console.log("percentage gone: " + per + "\nrotate: " + rotate);
     const halfCircles = document.querySelectorAll(".half-circle");
     const halfCircleTop = document.querySelector(".half-circle-top");
-    console.log(halfCircles);
+    // console.log(halfCircles);
     halfCircles.forEach((cir) => {
       cir.style.transform = `rotate(${rotate}deg)`;
-      // halfCircles[0].style.transform = `rotate(${rotate}deg)`;
-      // halfCircles[1].style.transform = `rotate(${rotate}deg)`;
       console.log(rotate);
       if (rotate >= 180) {
         console.log("> = 180");
-        // halfCircles[0].style.transform = "rotate (180deg)";
         halfCircles[0].style.transform = `rotate(180deg)`;
         halfCircleTop.style.opacity = "0";
       } else {
-        // halfCircleTop.style.opacity = "1";
+        halfCircleTop.style.opacity = "1";
       }
     });
 
@@ -83,6 +80,13 @@ const Timer = ({
     setTimer(totalS);
     // setTimer();
     setIsEditing(false);
+    const halfCircles = document.querySelectorAll(".half-circle");
+    const halfCircleTop = document.querySelector(".half-circle-top");
+    console.log(startTime);
+    halfCircles.forEach((cir) => {
+      cir.style.transform = `rotate(0deg)`;
+    });
+    halfCircleTop.style.opacity = "0";
   };
 
   return (
