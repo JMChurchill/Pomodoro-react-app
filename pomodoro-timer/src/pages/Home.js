@@ -14,6 +14,9 @@ const Home = () => {
   const [time, setTime] = useState(() => startTime);
   const [isAlarm, setIsAlarm] = useState(false);
   const [completeTimers, setCompleteTimers] = useState(0);
+  const [breakTime, setBreakTime] = useState(6);
+  const [isBreakTimer, setIsBreakTimer] = useState(false);
+  const [studyCount, setStudyCount] = useState(0);
   // const [interval, setSInterval] = useState(null);
   const audio = new Audio(alarm);
 
@@ -73,10 +76,24 @@ const Home = () => {
     audio.currentTime = 0;
     setIsAlarm(() => !isAlarm);
     console.log(isAlarm);
+    if (isBreakTimer) {
+      setIsBreakTimer(false);
+    } else {
+      setStudyCount((studyCount) => studyCount + 1);
+    }
+  };
+
+  const startBreak = () => {
+    console.log("beakTime---====" + breakTime);
+    setTime(breakTime);
+    setIsBreakTimer(true);
+    setIsStarted(true);
   };
 
   return (
     <main>
+      {!isBreakTimer ? <h1>Study Timer</h1> : <h1>Break Timer</h1>}
+      <h2> Study Count {studyCount}</h2>
       <Timer
         time={time}
         isStarted={isStarted}
@@ -88,6 +105,8 @@ const Home = () => {
         completeTimers={completeTimers}
         startTime={startTime}
         // seconds={seconds}
+        isBreakTimer={isBreakTimer}
+        breakTime={breakTime}
       />
       <ControlBar
         startTimer={startTimer}
@@ -96,6 +115,9 @@ const Home = () => {
         // setTier={setTimer}
         isAlarm={isAlarm}
         cancelAlarm={cancelAlarm}
+        breakTime={breakTime}
+        setBreakTime={setBreakTime}
+        startBreak={startBreak}
       />
     </main>
   );

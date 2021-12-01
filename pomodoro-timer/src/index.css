@@ -154,6 +154,23 @@ Controlbar
   border: 2px solid rgb(32, 212, 212);
 }
 
+.control-bar form,
+input {
+  /* color: red; */
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.control-bar input {
+  width: 5rem;
+  border: white;
+  border-bottom: solid 2px var(--darkGrey);
+  margin: 0 10px;
+}
+.control-bar form .btn {
+  width: auto;
+}
+
 /* 
 ====== 
 Controlbar

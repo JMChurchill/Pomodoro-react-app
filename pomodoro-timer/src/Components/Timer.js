@@ -9,6 +9,8 @@ const Timer = ({
   setIsAlarmSound,
   completeTimers,
   startTime,
+  isBreakTimer,
+  breakTime,
 }) => {
   // const theT = time;
   // console.log(time);
@@ -45,12 +47,22 @@ const Timer = ({
   if (time !== null) {
     console.log(time);
     formattedTime = secondsToHms(time);
-    // console.log("start" + startTime);
-    let per = time / startTime;
+    //Update progress wheel
+    let per;
+    if (isBreakTimer) {
+      // console.log("breakTimer active");
+      per = time / breakTime;
+    } else {
+      // console.log("breakTimer inactive");
+      per = time / startTime;
+    }
     let rotate = 360 - per * 360;
     // console.log("percentage gone: " + per + "\nrotate: " + rotate);
     const halfCircles = document.querySelectorAll(".half-circle");
     const halfCircleTop = document.querySelector(".half-circle-top");
+    // if (isBreakTimer) {
+    //   halfCircleTop.style.backgroundColor = "grey";
+    // }
     // console.log(halfCircles);
     halfCircles.forEach((cir) => {
       cir.style.transform = `rotate(${rotate}deg)`;
